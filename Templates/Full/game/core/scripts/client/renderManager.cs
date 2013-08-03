@@ -84,6 +84,10 @@ function initRenderManager()
                
    // Resolve format change token last.
    DiffuseRenderPassManager.addManager( new RenderPassStateBin() { renderOrder = 1.7; stateToken = AL_FormatToken; } );
+   
+   // Add the selection manager bin to render selected meshes >>>  
+   DiffuseRenderPassManager.addManager( new RenderSelectionMgr() { renderOrder = 1.55; processAddOrder = 1.55; } );  
+   // <<<     
 }
 
 /// This post effect is used to copy data from the non-MSAA back-buffer to the

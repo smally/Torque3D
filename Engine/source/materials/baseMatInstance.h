@@ -80,6 +80,10 @@ protected:
    /// This is set by initialization and used by the prepass.
    bool mHasNormalMaps;
 
+   // >>>
+   bool mHasSelection;
+   // <<<
+
 public:
 
    virtual ~BaseMatInstance();
@@ -209,6 +213,11 @@ public:
    virtual const GFXVertexFormat* getVertexFormat() const = 0;
 
    virtual void dumpShaderInfo() const = 0;
+
+   // >>>
+   bool hasSelection() { return mHasSelection; };
+   void setSelection(bool sel) { mHasSelection = sel; };
+   // <<<
 
    /// Fast test for use of normal maps in this material.
    bool hasNormalMap() const { return mHasNormalMaps; }

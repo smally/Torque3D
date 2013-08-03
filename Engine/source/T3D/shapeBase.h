@@ -1223,6 +1223,10 @@ public:
    /// Set the force hidden state on a named mesh.
    void setMeshHidden( const char *meshName, bool forceHidden ); 
    
+   // >>>
+   void setSelection( bool sel );
+   // <<<
+
 #ifndef TORQUE_SHIPPING
 
    /// Prints the list of meshes and their visibility state

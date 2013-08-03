@@ -37,6 +37,7 @@
 #include "renderInstance/renderTranslucentMgr.h"
 #include "renderInstance/renderGlowMgr.h"
 #include "renderInstance/renderTerrainMgr.h"
+#include "renderInstance/renderSelectionMgr.h"    //silhouette selection
 #include "core/util/safeDelete.h"
 #include "math/util/matrixSet.h"
 #include "console/engineAPI.h"
@@ -74,6 +75,10 @@ void MeshRenderInst::clear()
 {
    dMemset( this, 0, sizeof(MeshRenderInst) );
    visibility = 1.0f;
+
+   // <<<
+   mHasSelection = false;
+   // >>>
 }
 
 void ParticleRenderInst::clear()

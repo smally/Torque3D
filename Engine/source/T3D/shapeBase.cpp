@@ -3773,6 +3773,24 @@ void ShapeBase::setCurrentWaterObject( WaterObject *obj )
    mCurrentWaterObject = obj;
 }
 
+// >>>  
+void ShapeBase::setSelection( bool sel )
+{
+   if (!mShapeInstance || !isClientObject())
+      return;
+
+   if (!mShapeInstance->ownMaterialList())
+      return;
+
+   TSMaterialList* pMatList = mShapeInstance->getMaterialList();
+   for (S32 j = 0; j < pMatList->mMatInstList.size(); j++)
+   {
+      BaseMatInstance * bmi = pMatList->getMaterialInst(j);
+      bmi->setSelection(sel);
+   }
+}
+// <<<  
+
 //--------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 DefineEngineMethod( ShapeBase, setHidden, void, ( bool show ),,
@@ -3789,6 +3807,16 @@ DefineEngineMethod( ShapeBase, isHidden, bool, (),,
 {
    return object->isHidden();
 }
+
+
+// >>>
+DefineEngineMethod( ShapeBase, setSelection, void, ( bool selected ),,
+   "Set object selection mode.\n"
+   "@returns nothing\n\n" )
+{
+   object->setSelection(selected);
+}
+// <<<
 
 //----------------------------------------------------------------------------
 DefineEngineMethod( ShapeBase, playAudio, bool, ( S32 slot, SFXTrack* track ),,

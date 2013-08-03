@@ -345,6 +345,10 @@ struct MeshRenderInst : public RenderInst
    U8    transFlags;
    bool  reflective;
    F32   visibility;
+   
+   // >>>
+   bool mHasSelection;
+   // <<<
 
    /// A generic hint value passed from the game
    /// code down to the material for use by shader 
